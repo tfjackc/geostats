@@ -7,8 +7,20 @@
         <v-card>
           <v-card-title class="headline">Load GeoJSON Web Service</v-card-title>
           <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </v-card-text>
+            <v-sheet max-width="600" class="mx-auto">
+              <v-form validate-on="submit lazy">
+                <v-text-field
+                    label="https://www.example.com/geojson"
+                ></v-text-field>
+
+                <v-btn
+                    type="submit"
+                    block
+                    class="mt-2"
+                    text="Submit"
+                ></v-btn>
+              </v-form>
+            </v-sheet>          </v-card-text>
           <v-card-actions>
             <v-btn color="primary" block @click="dialog = false">Close</v-btn>
           </v-card-actions>

@@ -7,3 +7,6 @@
 .v-col {
     padding: 0 !important;
 }
+.v-dialog .v-card {
+    width: 600px;
+}
