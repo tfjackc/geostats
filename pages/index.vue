@@ -1,9 +1,12 @@
 <script setup lang="ts">
-
+import Map from '~/components/Map.vue'
 </script>
 
 <template>
-<Map />
+  <v-col>
+    <Map />
+  </v-col>
+
 </template>
 
 <style scoped>

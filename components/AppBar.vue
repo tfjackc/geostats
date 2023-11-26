@@ -1,11 +1,7 @@
-<script setup lang="ts">
+<template>
+    <v-app-bar title="Geostats">
+    </v-app-bar>
+</template>
+<script lang="ts" setup>
 
 </script>
-
-<template>
-
-</template>
-
-<style scoped>
-
-</style>

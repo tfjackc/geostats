@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import AppBar from "~/components/AppBar.vue";
-</script>
-
 <template>
-  <AppBar />
-<slot />
+  <v-layout class="rounded rounded-md">
+    <AppBar />
+    <Sidebar />
+    <v-main class="d-flex align-center justify-center">
+     <slot />
+    </v-main>
+  </v-layout>
 </template>
-
-<style scoped>
-
-</style>
+<script setup lang="ts">
+import Sidebar from "~/components/Sidebar.vue";
+</script>

@@ -1,0 +1,9 @@
+.map-container {
+    height: 100vh;
+    width: 100%;
+    border: 1px solid black;
+    overflow: hidden; /* Ensure no overflow inside the map container */
+}
+.v-col {
+    padding: 0 !important;
+}
