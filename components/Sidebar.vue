@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-layout>
-      <v-navigation-drawer style="margin-top: 80px;"
+      <v-navigation-drawer
           v-model="drawer"
           :rail="rail"
           permanent

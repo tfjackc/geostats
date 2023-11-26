@@ -10,3 +10,6 @@
 .v-dialog .v-card {
     width: 600px;
 }
+.v-navigation-drawer {
+    margin-top: 65px;
+}
