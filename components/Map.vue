@@ -12,6 +12,10 @@
           layer-type="base"
           name="OpenStreetMap"
       />
+
+      <LGeoJson
+        :geojson="geojson" />
+
     </LMap>
   </div>
 </template>
@@ -19,6 +23,15 @@
 <script setup>
 import { ref } from 'vue'
 const zoom = ref(4)
+import { useDataStore } from "~/store/data_store";
+import { onMounted } from 'vue'
+import { storeToRefs } from "pinia";
+const data_store = useDataStore();
+const { geojson } = storeToRefs(data_store);
+
+onMounted(async() => {
+ await data_store.getFiles()
+})
 </script>
 
 <style>

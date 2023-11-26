@@ -31,6 +31,7 @@
   </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import { useDataStore } from "~/store/data_store";
 const dataStore = useDataStore();
 const { url_dialog } = storeToRefs(dataStore);

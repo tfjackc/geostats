@@ -8,5 +8,6 @@
   </v-layout>
 </template>
 <script setup lang="ts">
+import AppBar from "~/components/AppBar.vue";
 import Sidebar from "~/components/Sidebar.vue";
 </script>
