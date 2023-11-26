@@ -24,17 +24,22 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-cloud-download-outline" title="Url" value="url"></v-list-item>
+          <v-list-item prepend-icon="mdi-cloud-download-outline"
+                       title="Url"
+                       value="url"
+                       @click="dialog = true"
+          ></v-list-item>
           <v-list-item prepend-icon="mdi-file-code-outline" title="File" value="file"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 600px;"></v-main>
     </v-layout>
   </v-card>
+  <LoadUrl />
 </template>
 
 <script setup lang="ts">
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, rail } = storeToRefs(dataStore);
+const { drawer, rail, dialog } = storeToRefs(dataStore);
 </script>
