@@ -1,7 +1,7 @@
 <template>
     <div class="text-center">
       <v-dialog
-          v-model="dialog"
+          v-model="url_dialog"
           width="auto"
       >
         <v-card>
@@ -14,6 +14,7 @@
                 ></v-text-field>
 
                 <v-btn
+                    color="success"
                     type="submit"
                     block
                     class="mt-2"
@@ -22,7 +23,7 @@
               </v-form>
             </v-sheet>          </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" block @click="dialog = false">Close</v-btn>
+            <v-btn color="primary" block @click="url_dialog = false">Close</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -32,7 +33,7 @@
 <script setup lang="ts">
 import { useDataStore } from "~/store/data_store";
 const dataStore = useDataStore();
-const { dialog } = storeToRefs(dataStore);
+const { url_dialog } = storeToRefs(dataStore);
 </script>
 
 <style scoped>
