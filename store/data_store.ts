@@ -22,8 +22,6 @@ export const useDataStore = defineStore('data_store', {
                 this.geojson = await response.json();
                 console.log(this.geojson);
         }
-
-
     },
 })
 
