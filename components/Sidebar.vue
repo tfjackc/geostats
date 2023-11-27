@@ -29,11 +29,24 @@
                        value="url"
                        @click="url_dialog = true"
           ></v-list-item>
+
           <v-list-item prepend-icon="mdi-file-code-outline"
                        title="File"
                        value="file"
                         @click="file_dialog = true"
           ></v-list-item>
+          <v-list-item v-if="layerInfo.length > 0">
+            <v-chip v-for="name in layerInfo"
+                class="ma-2"
+                closable
+                color="teal"
+                close-icon="mdi-delete"
+                prepend-icon="mdi-checkbox-marked-circle"
+                :model-value="true"
+            >
+              {{ name }}
+            </v-chip>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 600px;"></v-main>
@@ -46,5 +59,5 @@
 <script setup lang="ts">
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, rail, url_dialog, file_dialog } = storeToRefs(dataStore);
+const { drawer, rail, url_dialog, file_dialog, layerInfo } = storeToRefs(dataStore);
 </script>

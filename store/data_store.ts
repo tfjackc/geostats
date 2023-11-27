@@ -12,6 +12,7 @@ export const useDataStore = defineStore('data_store', {
         loading: false as boolean,
         searchedValue: "" as string,
         layers: [] as any[],
+        layerInfo: [] as any[],
     }),
     getters: {
 
@@ -20,10 +21,24 @@ export const useDataStore = defineStore('data_store', {
         async getGeoJSONWebService() {
             const geojson_url = this.searchedValue;
             const response = await fetch(geojson_url);
-            this.geojson = await response.json();
-            this.layers.push(this.geojson);
+            const geojson = await response.json();
+            this.layers.push(geojson);
+
+            await this.loopLayers();
+        },
+
+        async loopLayers() {
+            this.layers.forEach((layer: any) => {
+                if (layer.metadata?.title) {
+                    console.log(layer.metadata.title);
+                    this.layerInfo.push(layer.metadata.title);
+                } else {
+                    console.log(this.searchedValue);
+                    this.layerInfo.push(this.searchedValue);
+                }
+            });
         }
-    },
+    }
 })
 
 //https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson
