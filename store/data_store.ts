@@ -29,10 +29,10 @@ export const useDataStore = defineStore('data_store', {
 
         async loopLayers() {
             this.layers.forEach((layer: any) => {
-                if (layer.metadata?.title) {
+                if (layer.metadata?.title && !this.layerInfo.includes(layer.metadata.title)) {
                     console.log(layer.metadata.title);
                     this.layerInfo.push(layer.metadata.title);
-                } else {
+                } else if (!this.layerInfo.includes(this.searchedValue)) {
                     console.log(this.searchedValue);
                     this.layerInfo.push(this.searchedValue);
                 }
