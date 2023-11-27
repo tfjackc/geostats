@@ -7,15 +7,15 @@
         :center="[46.982639, -108.519417]"
     >
       <LTileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
-          layer-type="base"
-          name="OpenStreetMap"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
+        layer-type="base"
+        name="OpenStreetMap"
       />
 
       <LGeoJson
-        :geojson="geojson" />
-
+        v-for="layer in layers"
+        :geojson="layer" />
     </LMap>
   </div>
 </template>
@@ -27,7 +27,7 @@ import { useDataStore } from "~/store/data_store";
 import { onMounted } from 'vue'
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();
-const { geojson } = storeToRefs(data_store);
+const { geojson, layers } = storeToRefs(data_store);
 
 // onMounted(async() => {
 //  await data_store.getFiles()

@@ -11,6 +11,7 @@ export const useDataStore = defineStore('data_store', {
         form: false as boolean,
         loading: false as boolean,
         searchedValue: "" as string,
+        layers: [] as any[],
     }),
     getters: {
 
@@ -19,10 +20,12 @@ export const useDataStore = defineStore('data_store', {
         async getGeoJSONWebService() {
             const geojson_url = this.searchedValue;
             const response = await fetch(geojson_url);
-                this.geojson = await response.json();
-                console.log(this.geojson);
+            this.geojson = await response.json();
+            this.layers.push(this.geojson);
         }
     },
 })
 
-//"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson"
+//https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson
+//https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/countries.geojson
+//https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json
