@@ -29,9 +29,9 @@ import { storeToRefs } from "pinia";
 const data_store = useDataStore();
 const { geojson } = storeToRefs(data_store);
 
-onMounted(async() => {
- await data_store.getFiles()
-})
+// onMounted(async() => {
+//  await data_store.getFiles()
+// })
 </script>
 
 <style>

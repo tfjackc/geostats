@@ -8,12 +8,18 @@
           <v-card-title class="headline">Load GeoJSON Web Service</v-card-title>
           <v-card-text>
             <v-sheet max-width="600" class="mx-auto">
-              <v-form validate-on="submit lazy">
+              <v-form
+                  v-model="form"
+                  @submit.prevent="data_store.getGeoJSONWebService()">>
                 <v-text-field
+                    v-model="searchedValue"
                     label="https://www.example.com/geojson"
+                    :rules="[required]"
+                    clearable: boolean=""
                 ></v-text-field>
-
                 <v-btn
+                    :disabled="!form"
+                    :loading="loading"
                     color="success"
                     type="submit"
                     block
@@ -33,8 +39,12 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useDataStore } from "~/store/data_store";
-const dataStore = useDataStore();
-const { url_dialog } = storeToRefs(dataStore);
+const data_store = useDataStore();
+const { url_dialog, searchedValue, form, loading } = storeToRefs(data_store);
+
+function required (v: any) {
+  return !!v || 'Field is required'
+}
 </script>
 
 <style scoped>
