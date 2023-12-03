@@ -13,9 +13,7 @@
         name="OpenStreetMap"
       />
 
-      <LGeoJson
-        v-for="layer in layers"
-        :geojson="layer" />
+      <LGeoJson v-for="layer in layers" :geojson="layer" :visible="layer.visible" />
     </LMap>
   </div>
 </template>

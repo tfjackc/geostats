@@ -36,17 +36,15 @@
                         @click="file_dialog = true"
           ></v-list-item>
           <v-list-item v-if="layerInfo.length > 0">
-            <v-chip v-for="name in layerInfo"
-                class="ma-2"
-                closable
-                color="teal"
-                close-icon="mdi-delete"
-                prepend-icon="mdi-checkbox-marked-circle"
-                :model-value="true"
-            >
-              {{ name }}
-            </v-chip>
+            <div v-for="(name, index) in layerInfo" :key="index" color="success">
+              <div class="d-flex align-center">
+                <v-checkbox :label="name" v-model="layers[index].visible" @change="dataStore.layerCheck(index, $event)"></v-checkbox>
+              </div>
+            </div>
           </v-list-item>
+
+
+
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 600px;"></v-main>
@@ -59,5 +57,5 @@
 <script setup lang="ts">
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, rail, url_dialog, file_dialog, layerInfo } = storeToRefs(dataStore);
+const { drawer, rail, url_dialog, file_dialog, layerInfo, layers, layerCheckbox } = storeToRefs(dataStore);
 </script>
