@@ -14,7 +14,7 @@ export const useDataStore = defineStore('data_store', {
         layers: [] as any[],
         layerInfo: [] as any[],
         layerName: "" as string,
-        layerCheckbox: [] as boolean[],
+        layerCheckbox: true as boolean,
         tab: null as null | number,
     }),
     getters: {
@@ -28,14 +28,11 @@ export const useDataStore = defineStore('data_store', {
                 const response = await fetch(geojson_url);
 
                 if (response.ok) {
-                    const geojson = await response.json();
-                    this.layers.push(geojson);
-                    //await this.loopLayers();
-
+                    this.geojson = await response.json();
                     this.layerInfo.push(this.layerName)
                     // Close the v-form upon a successful data fetch
                     this.url_dialog = false;
-                    await this.loopLayers();
+                    await this.getData();
                 } else {
                     // Handle unsuccessful response (e.g., show an error message)
                     console.error('Failed to fetch data:', response.status, response.statusText);
@@ -46,19 +43,16 @@ export const useDataStore = defineStore('data_store', {
             }
         },
 
-        async layerCheck(index: number, e: any) {
-            console.log(index)
-            this.layerCheckbox[index] = e.target.checked;
-            this.layers[index].visible = this.layerCheckbox[index];
+        async getData() {
+           this.layerCheckbox = true;
+           // @ts-ignore
+           this.geojson.visible = true;
         },
 
-
-        async loopLayers() {
-            this.layers.forEach((index: number) => {
-                // Set the initial visibility of the layers and checkboxes to true
-                this.layers[index].visible = true;
-                this.layerCheckbox[index] = true;
-            });
+        async layerCheck(e: any) {
+            this.layerCheckbox = e.target.checked;
+            // @ts-ignore
+            this.geojson.visible = this.layerCheckbox
         },
     }
 })

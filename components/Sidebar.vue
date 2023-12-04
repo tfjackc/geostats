@@ -35,10 +35,10 @@
                        value="file"
                         @click="file_dialog = true"
           ></v-list-item>
-          <v-list-item v-if="layerInfo.length > 0">
-            <div v-for="(name, index) in layerInfo" :key="index" color="success">
+          <v-list-item v-if="layerName.length > 0">
+            <div>
               <div class="d-flex align-center">
-                <v-checkbox :label="name" v-model="layers[index].visible" @change="dataStore.layerCheck(index, $event)"></v-checkbox>
+                <v-checkbox v-model="layerCheckbox" :label="layerName" @change="dataStore.layerCheck($event)"></v-checkbox>
               </div>
             </div>
           </v-list-item>
@@ -57,5 +57,5 @@
 <script setup lang="ts">
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, rail, url_dialog, file_dialog, layerInfo, layers, layerCheckbox } = storeToRefs(dataStore);
+const { drawer, rail, url_dialog, file_dialog, layerName, layerCheckbox } = storeToRefs(dataStore);
 </script>

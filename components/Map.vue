@@ -13,7 +13,7 @@
         name="OpenStreetMap"
       />
 
-      <LGeoJson v-for="layer in layers" :geojson="layer" :visible="layer.visible" />
+      <LGeoJson :geojson="geojson" :visible="layerCheckbox" />
     </LMap>
   </div>
 </template>
@@ -25,7 +25,7 @@ import { useDataStore } from "~/store/data_store";
 import { onMounted } from 'vue'
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();
-const { geojson, layers } = storeToRefs(data_store);
+const { geojson, layerCheckbox } = storeToRefs(data_store);
 
 // onMounted(async() => {
 //  await data_store.getFiles()
