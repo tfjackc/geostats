@@ -3,7 +3,7 @@
     <AppBar />
     <Sidebar />
     <v-main class="d-flex align-center justify-center">
-     <slot />
+      <slot />
     </v-main>
   </v-layout>
 </template>

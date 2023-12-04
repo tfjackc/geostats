@@ -15,6 +15,7 @@ export const useDataStore = defineStore('data_store', {
         layerInfo: [] as any[],
         layerName: "" as string,
         layerCheckbox: [] as boolean[],
+        tab: null as null | number,
     }),
     getters: {
 
@@ -53,32 +54,12 @@ export const useDataStore = defineStore('data_store', {
 
 
         async loopLayers() {
-            this.layers.forEach((layer: any, index: number) => {
-                console.log(index + " " + this.layerName);
-
+            this.layers.forEach((index: number) => {
                 // Set the initial visibility of the layers and checkboxes to true
                 this.layers[index].visible = true;
                 this.layerCheckbox[index] = true;
             });
         },
-
-
-
-        // async loopLayers() {
-        //     this.layers.forEach((layer: any) => {
-        //         if (layer.metadata?.title && !this.layerInfo.includes(layer.metadata.title)) {
-        //             console.log(layer.metadata.title);
-        //             this.layerInfo.push(layer.metadata.title);
-        //         }
-        //         else {
-        //             this.layerInfo.push(this.layerName)
-        //         }
-        //         // else if (!this.layerInfo.includes(this.searchedValue)) {
-        //         //     console.log(this.searchedValue);
-        //         //     this.layerInfo.push(this.searchedValue);
-        //         // }
-        //     });
-        // }
     }
 })
 

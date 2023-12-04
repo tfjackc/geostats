@@ -13,3 +13,7 @@
 .v-navigation-drawer {
     margin-top: 65px;
 }
+.v-window {
+    height: 100vh;
+    width: 100%;
+}
