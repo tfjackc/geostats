@@ -11,7 +11,7 @@ export const useDataStore = defineStore('data_store', {
         form: false as boolean,
         loading: false as boolean,
         searchedValue: "" as string,
-        layers: [] as any[],
+        geojson_layer: [] as any[],
         layerInfo: [] as any[],
         layerName: "" as string,
         layerCheckbox: true as boolean,
@@ -29,6 +29,7 @@ export const useDataStore = defineStore('data_store', {
 
                 if (response.ok) {
                     this.geojson = await response.json();
+                    this.geojson_layer.push(this.geojson)
                     this.layerInfo.push(this.layerName)
                     // Close the v-form upon a successful data fetch
                     this.url_dialog = false;
@@ -44,15 +45,25 @@ export const useDataStore = defineStore('data_store', {
         },
 
         async getData() {
-           this.layerCheckbox = true;
-           // @ts-ignore
-           this.geojson.visible = true;
-        },
+            this.layerCheckbox = true;
 
-        async layerCheck(e: any) {
-            this.layerCheckbox = e.target.checked;
-            // @ts-ignore
-            this.geojson.visible = this.layerCheckbox
+            // Assuming this.geojson is an object with a "features" array
+            //@ts-ignore
+            if (this.geojson && this.geojson.features && this.geojson.features.length > 0) {
+                // Accessing the first feature in the features array
+                //@ts-ignore
+                const firstFeature = this.geojson.features[0];
+
+                // Ensure the first feature has properties
+                if (firstFeature.properties) {
+                    const fieldNames = Object.keys(firstFeature.properties);
+                    console.log('Unique Field Names:', fieldNames);
+                } else {
+                    console.error('The first feature does not have properties');
+                }
+            } else {
+                console.error('GeoJSON data is missing or invalid');
+            }
         },
     }
 })
