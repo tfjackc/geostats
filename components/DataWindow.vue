@@ -24,6 +24,7 @@
         label="Select"
         :items="fieldNames"
         multiple
+        class="elevation-10"
     ></v-select>
   </v-col>
   </v-row>
@@ -47,7 +48,7 @@
             :headers="headers"
             :items="layerData"
             :items-per-page="10"
-            class="elevation-1"
+            class="elevation-10"
         ></v-data-table>
       </v-col>
     </v-row>
