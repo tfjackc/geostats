@@ -2,7 +2,7 @@
   <v-window v-model="tab">
     <v-window-item
         :value="1">
-      <h1>Data Crunch</h1>
+        <DataWindow />
     </v-window-item>
     <v-window-item
         :value="2">

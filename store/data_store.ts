@@ -10,10 +10,14 @@ export const useDataStore = defineStore('data_store', {
         geojson: undefined as GeoJSON | undefined,
         form: false as boolean,
         loading: false as boolean,
-        searchedValue: "" as string,
+        searchedValue: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson" as string,
         geojson_layer: [] as any[],
         layerInfo: [] as any[],
-        layerName: "" as string,
+        layerName: "earthquakes" as string,
+        fieldNames: [] as any[],
+        selectedFields: [] as any[],
+        headers: [] as any[],
+        layerData: [] as any[],
         layerCheckbox: true as boolean,
         tab: null as null | number,
     }),
@@ -49,21 +53,39 @@ export const useDataStore = defineStore('data_store', {
 
             // Assuming this.geojson is an object with a "features" array
             //@ts-ignore
-            if (this.geojson && this.geojson.features && this.geojson.features.length > 0) {
+            if (this.geojson && this.geojson.features.length > 0) {
                 // Accessing the first feature in the features array
                 //@ts-ignore
-                const firstFeature = this.geojson.features[0];
+                const layerFeatures = this.geojson.features[0];
 
                 // Ensure the first feature has properties
-                if (firstFeature.properties) {
-                    const fieldNames = Object.keys(firstFeature.properties);
-                    console.log('Unique Field Names:', fieldNames);
+                if (layerFeatures.properties) {
+                    this.fieldNames = Object.keys(layerFeatures.properties);
+                    //@ts-ignore
+                    this.geojson.features.forEach((field: any) => {
+                        this.layerData.push(field.properties)
+                    });
+
                 } else {
                     console.error('The first feature does not have properties');
                 }
+
+
+
             } else {
                 console.error('GeoJSON data is missing or invalid');
             }
+        },
+
+        async createTable() {
+          console.log("create table")
+            // Create dynamic headers based on selected fields
+            this.headers = this.selectedFields.map(field => ({
+                align: 'start',
+                key: field,
+                sortable: true,
+                title: field,
+            }));
         },
     }
 })
