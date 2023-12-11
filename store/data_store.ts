@@ -18,7 +18,7 @@ export const useDataStore = defineStore('data_store', {
         selectedFields: [] as any[],
         headers: [] as any[],
         layerData: [] as any[],
-        layerCheckbox: true as boolean,
+        layerCheckbox: false as boolean,
         tab: null as null | number,
     }),
     getters: {
@@ -86,6 +86,11 @@ export const useDataStore = defineStore('data_store', {
                 sortable: true,
                 title: field,
             }));
+        },
+
+        async layerCheck(e: any) {
+            console.log("layer vis changed")
+
         },
     }
 })
