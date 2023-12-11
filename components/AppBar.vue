@@ -19,7 +19,6 @@ import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
 const { drawer, tab } = storeToRefs(dataStore);
 import { useTheme } from 'vuetify'
-
 const theme = useTheme()
 
 function toggleTheme () {

@@ -34,6 +34,11 @@
                @click="data_store.createTable"
         >Create Table</v-btn>
       </v-col>
+      <v-col class="d-flex justify-center">
+        <v-btn v-if="headers.length > 0"
+               color="success"
+        >Go To Map</v-btn>
+      </v-col>
     </v-row>
 
     <v-row>
