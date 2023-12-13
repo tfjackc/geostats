@@ -15,6 +15,11 @@
         <p v-if="fieldNames.length > 0">Web Service: {{searchedValue}}</p>
       </v-col>
     </v-row>
+    <v-row v-if="fieldNames.length > 0">
+      <v-col>
+        <h2>Make Selection</h2>
+      </v-col>
+    </v-row>
   <v-row>
   <v-col class="d-flex justify-center">
     <v-select
@@ -29,13 +34,12 @@
   </v-col>
   </v-row>
     <v-row>
-      <v-col class="d-flex justify-center">
+      <v-col>
         <v-btn v-if="selectedFields.length > 0"
                color="success"
                @click="data_store.createTable"
         >Create Table</v-btn>
-      </v-col>
-      <v-col class="d-flex justify-center">
+
         <v-btn v-if="headers.length > 0"
                color="success"
         >Go To Map</v-btn>

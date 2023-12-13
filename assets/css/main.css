@@ -17,3 +17,13 @@
     height: 100vh;
     width: 100%;
 }
+.v-btn {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.v-select {
+    margin-top: 10px;
+}
+.v-table {
+    margin-top: 20px;
+}
