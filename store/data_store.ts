@@ -12,7 +12,6 @@ export const useDataStore = defineStore('data_store', {
         loading: false as boolean,
         searchedValue: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson" as string,
         geojson_layer: [] as any[],
-        layerInfo: [] as any[],
         layerName: "earthquakes" as string,
         fieldNames: [] as any[],
         selectedFields: [] as any[],
@@ -21,10 +20,9 @@ export const useDataStore = defineStore('data_store', {
         layerCheckbox: false as boolean,
         tab: null as null | number,
         popupContent: '' as string,
+        // geojsonOptions: {} as any,
     }),
-    getters: {
-
-    },
+    getters: {},
     actions: {
         async getGeoJSONWebService() {
             const geojson_url = this.searchedValue;
@@ -35,7 +33,6 @@ export const useDataStore = defineStore('data_store', {
                 if (response.ok) {
                     this.geojson = await response.json();
                     this.geojson_layer.push(this.geojson)
-                    this.layerInfo.push(this.layerName)
                     // Close the v-form upon a successful data fetch
                     this.url_dialog = false;
                     await this.getData();
@@ -72,14 +69,13 @@ export const useDataStore = defineStore('data_store', {
                 }
 
 
-
             } else {
                 console.error('GeoJSON data is missing or invalid');
             }
         },
 
         async createTable() {
-          console.log("create table")
+            console.log("create table")
             // Create dynamic headers based on selected fields
             this.headers = this.selectedFields.map(field => ({
                 align: 'start',
@@ -97,8 +93,29 @@ export const useDataStore = defineStore('data_store', {
         async tabMap() {
             this.tab = 2;
         },
-    }
-})
+
+        async changeFields(e: any) {
+            console.log("fields changed: " + e)
+        },
+
+            //     this.geojsonOptions = {
+            //         onEachFeature: (feature: any, layer: any) => {
+            //             let popupContent = '<div class="popup-content">';
+            //             //@ts-ignore
+            //             this.selectedFields.value?.forEach((field: any) => {
+            //                 if (feature.properties[field]) {
+            //                     popupContent += `<strong>${field}:</strong> ${feature.properties[field]}<br>`;
+            //                 }
+            //             });
+            //             popupContent += '</div>';
+            //             layer.bindPopup(popupContent);
+            //         },
+            //     };
+            // },
+
+
+        }
+    });
 
 //https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson
 //https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/countries.geojson

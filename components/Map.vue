@@ -21,7 +21,6 @@
 import { ref } from 'vue'
 const zoom = ref(4)
 import { useDataStore } from "~/store/data_store";
-import { onMounted } from 'vue'
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();
 const { geojson, layerCheckbox, selectedFields } = storeToRefs(data_store);
@@ -37,7 +36,6 @@ const geojsonOptions = {
       }
     });
     popupContent += '</div>';
-
     // Bind the popup content to the layer
     layer.bindPopup(popupContent);
   },

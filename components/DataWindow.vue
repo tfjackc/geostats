@@ -30,6 +30,7 @@
         :items="fieldNames"
         multiple
         class="elevation-10"
+        @update:model-value="data_store.changeFields"
     ></v-select>
   </v-col>
   </v-row>
@@ -49,16 +50,10 @@
 
     <v-row>
       <v-col class="d-flex justify-center">
-        <v-data-table
-            :headers="headers"
-            :items="layerData"
-            :items-per-page="10"
-            class="elevation-10"
-        ></v-data-table>
+        <DataTable />
       </v-col>
     </v-row>
   </v-container>
-  <DataTable />
 </template>
 
 <script setup lang="ts">
@@ -66,7 +61,7 @@ import { storeToRefs } from "pinia";
 import DataTable from '~/components/DataTable.vue'
 import { useDataStore } from "~/store/data_store";
 const data_store = useDataStore();
-const { fieldNames, selectedFields, searchedValue, headers, layerData } = storeToRefs(data_store);
+const { fieldNames, selectedFields, searchedValue, headers } = storeToRefs(data_store);
 </script>
 
 <style scoped>
