@@ -17,7 +17,7 @@
     height: 100vh;
     width: 100%;
 }
-.v-btn {
+.v-col .v-btn {
     margin-top: 20px;
     margin-right: 20px;
 }
@@ -26,4 +26,8 @@
 }
 .v-table {
     margin-top: 20px;
+}
+.leaflet-popup-content {
+    word-wrap: break-word; /* Allows long words to be able to break and wrap onto the next line */
+    white-space: normal; /* Overrides the default 'nowrap' */
 }

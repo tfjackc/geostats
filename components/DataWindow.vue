@@ -42,6 +42,7 @@
 
         <v-btn v-if="headers.length > 0"
                color="success"
+               @click="data_store.tabMap"
         >Go To Map</v-btn>
       </v-col>
     </v-row>

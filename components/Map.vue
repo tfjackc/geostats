@@ -12,8 +12,7 @@
         layer-type="base"
         name="OpenStreetMap"
       />
-
-      <LGeoJson :geojson="geojson" :visible="layerCheckbox" />
+      <LGeoJson :geojson="geojson" :visible="layerCheckbox" :options="geojsonOptions" />
     </LMap>
   </div>
 </template>
@@ -25,11 +24,24 @@ import { useDataStore } from "~/store/data_store";
 import { onMounted } from 'vue'
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();
-const { geojson, layerCheckbox } = storeToRefs(data_store);
+const { geojson, layerCheckbox, selectedFields } = storeToRefs(data_store);
 
-// onMounted(async() => {
-//  await data_store.getFiles()
-// })
+const geojsonOptions = {
+  onEachFeature: function (feature, layer) {
+    // Construct popup content based on feature properties
+    let popupContent = '<div class="popup-content">';
+    // Example: loop through selected fields and add them to the popup
+    selectedFields.value.forEach(field => {
+      if (feature.properties[field]) {
+        popupContent += `<strong>${field}:</strong> ${feature.properties[field]}<br>`;
+      }
+    });
+    popupContent += '</div>';
+
+    // Bind the popup content to the layer
+    layer.bindPopup(popupContent);
+  },
+};
 </script>
 
 <style>

@@ -20,6 +20,7 @@ export const useDataStore = defineStore('data_store', {
         layerData: [] as any[],
         layerCheckbox: false as boolean,
         tab: null as null | number,
+        popupContent: '' as string,
     }),
     getters: {
 
@@ -91,6 +92,10 @@ export const useDataStore = defineStore('data_store', {
         async layerCheck(e: any) {
             console.log("layer vis changed")
 
+        },
+
+        async tabMap() {
+            this.tab = 2;
         },
     }
 })

@@ -35,7 +35,7 @@
                        value="file"
                         @click="file_dialog = true"
           ></v-list-item>
-          <v-list-item v-if="layerName.length > 0">
+          <v-list-item v-if="layerName.length > 0 & tab == 2 & rail == false">
             <div>
               <div class="d-flex align-center">
                 <v-checkbox v-model="layerCheckbox" :label="layerName" @change="dataStore.layerCheck($event)"></v-checkbox>
@@ -55,7 +55,8 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs} from "pinia";
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, rail, url_dialog, file_dialog, layerName, layerCheckbox } = storeToRefs(dataStore);
+const { drawer, rail, url_dialog, file_dialog, layerName, layerCheckbox, tab } = storeToRefs(dataStore);
 </script>
