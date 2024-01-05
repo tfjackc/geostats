@@ -4,6 +4,10 @@
     border: 1px solid black;
     overflow: hidden; /* Ensure no overflow inside the map container */
 }
+.data-container {
+    height: 100vh;
+    width: 100%;
+}
 .v-col {
     padding: 0 !important;
 }
@@ -30,4 +34,8 @@
 .leaflet-popup-content {
     word-wrap: break-word; /* Allows long words to be able to break and wrap onto the next line */
     white-space: normal; /* Overrides the default 'nowrap' */
+}
+.link {
+    color: white;
+    text-decoration: green;
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="data-container">
   <v-row>
     <v-col class="d-flex justify-center">
   <h1>Exploratory Data Analysis</h1>
@@ -43,8 +43,7 @@
 
         <v-btn v-if="headers.length > 0"
                color="success"
-               @click="data_store.tabMap"
-        >Go To Map</v-btn>
+        ><NuxtLink class="link" to="/map">Go To Map</NuxtLink></v-btn>
       </v-col>
     </v-row>
 

@@ -1,20 +1,10 @@
 <template>
-  <v-window v-model="tab">
-    <v-window-item
-        :value="1">
-        <DataWindow />
-    </v-window-item>
-    <v-window-item
-        :value="2">
-      <v-col>
-        <Map />
-      </v-col>
-    </v-window-item>
-  </v-window>
+  <DataWindow />
 </template>
 
 <script setup lang="ts">
 import Map from '~/components/Map.vue'
+import DataWindow from '~/components/DataWindow.vue'
 import { useDataStore } from "~/store/data_store";
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();

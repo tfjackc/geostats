@@ -1,9 +1,9 @@
 <template>
-  <v-layout class="rounded rounded-md">
+    <v-layout class="rounded rounded-md">
     <AppBar />
     <Sidebar />
     <v-main class="d-flex align-center justify-center">
-      <slot />
+        <slot />
     </v-main>
   </v-layout>
 </template>

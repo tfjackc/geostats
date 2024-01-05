@@ -11,16 +11,14 @@ export const useDataStore = defineStore('data_store', {
         form: false as boolean,
         loading: false as boolean,
         searchedValue: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson" as string,
-        geojson_layer: [] as any[],
         layerName: "earthquakes" as string,
         fieldNames: [] as any[],
         selectedFields: [] as any[],
         headers: [] as any[],
         layerData: [] as any[],
         layerCheckbox: false as boolean,
-        tab: null as null | number,
-        popupContent: '' as string,
-        // geojsonOptions: {} as any,
+        tab: 1 as null | number,
+        geojsonOptions: {} as object,
     }),
     getters: {},
     actions: {
@@ -32,7 +30,6 @@ export const useDataStore = defineStore('data_store', {
 
                 if (response.ok) {
                     this.geojson = await response.json();
-                    this.geojson_layer.push(this.geojson)
                     // Close the v-form upon a successful data fetch
                     this.url_dialog = false;
                     await this.getData();
@@ -94,28 +91,30 @@ export const useDataStore = defineStore('data_store', {
             this.tab = 2;
         },
 
-        async changeFields(e: any) {
-            console.log("fields changed: " + e)
+        async createPopupContent(feature: any) {
+            console.log("triggering on change")
+            let content = '<div class="popup-content">';
+            this.selectedFields.forEach(field => {
+                if (feature.properties[field]) {
+                    content += `<strong>${field}:</strong> ${feature.properties[field]}<br>`;
+                }
+            });
+            content += '</div>';
+            return content;
         },
 
-            //     this.geojsonOptions = {
-            //         onEachFeature: (feature: any, layer: any) => {
-            //             let popupContent = '<div class="popup-content">';
-            //             //@ts-ignore
-            //             this.selectedFields.value?.forEach((field: any) => {
-            //                 if (feature.properties[field]) {
-            //                     popupContent += `<strong>${field}:</strong> ${feature.properties[field]}<br>`;
-            //                 }
-            //             });
-            //             popupContent += '</div>';
-            //             layer.bindPopup(popupContent);
-            //         },
-            //     };
-            // },
+        async changeFields(e: any) {
+            console.log("fields changed: " + e);
+            this.geojsonOptions = {
+                onEachFeature: async (feature: any, layer: any) => {
+                    const popupContent = await this.createPopupContent(feature);
+                    layer.bindPopup(popupContent);
 
-
-        }
-    });
+                }
+            };
+        },
+    }
+});
 
 //https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson
 //https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/countries.geojson

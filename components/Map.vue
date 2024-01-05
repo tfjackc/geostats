@@ -18,28 +18,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const zoom = ref(4)
 import { useDataStore } from "~/store/data_store";
 import { storeToRefs } from "pinia";
 const data_store = useDataStore();
-const { geojson, layerCheckbox, selectedFields } = storeToRefs(data_store);
-
-const geojsonOptions = {
-  onEachFeature: function (feature, layer) {
-    // Construct popup content based on feature properties
-    let popupContent = '<div class="popup-content">';
-    // Example: loop through selected fields and add them to the popup
-    selectedFields.value.forEach(field => {
-      if (feature.properties[field]) {
-        popupContent += `<strong>${field}:</strong> ${feature.properties[field]}<br>`;
-      }
-    });
-    popupContent += '</div>';
-    // Bind the popup content to the layer
-    layer.bindPopup(popupContent);
-  },
-};
+const { geojson, layerCheckbox, selectedFields, geojsonOptions } = storeToRefs(data_store);
 </script>
 
 <style>

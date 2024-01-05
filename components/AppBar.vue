@@ -2,22 +2,24 @@
     <v-app-bar>
       <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-app-bar-title>Geostats</v-app-bar-title>
-
-      <v-tabs
-          v-model="tab"
+      <v-btn
+          variant="outlined"
           color="success"
-          align-tabs="end"
-      >
-        <v-tab :value="1">Data Analysis</v-tab>
-        <v-tab :value="2">Map</v-tab>
-      </v-tabs>
+      ><NuxtLink class="link" to="/">Data Analysis</NuxtLink>
+      </v-btn>
+      <v-btn
+          variant="outlined"
+          color="success"
+          >
+        <NuxtLink class="link" to="/map">Map</NuxtLink>
+      </v-btn>
       <v-btn @click="toggleTheme"><v-icon icon="mdi-theme-light-dark" /></v-btn>
     </v-app-bar>
 </template>
 <script lang="ts" setup>
 import { useDataStore} from "~/store/data_store";
 const dataStore = useDataStore();
-const { drawer, tab } = storeToRefs(dataStore);
+const { drawer } = storeToRefs(dataStore);
 import { useTheme } from 'vuetify'
 const theme = useTheme()
 

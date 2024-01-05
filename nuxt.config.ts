@@ -2,7 +2,6 @@ export default defineNuxtConfig({
   srcDir: "",
   devtools: {
     enabled: true,
-
     timeline: {
       enabled: true
     }
