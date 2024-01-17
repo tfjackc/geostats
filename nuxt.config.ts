@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     'vuetify-nuxt-module',
-    'nuxt3-leaflet'
+    'nuxt3-leaflet',
+    '@nuxtjs/tailwindcss'
   ],
   css: ['~/assets/css/main.css'],
   vuetify: {

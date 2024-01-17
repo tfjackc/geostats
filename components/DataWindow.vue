@@ -1,27 +1,27 @@
 <template>
   <v-container class="data-container">
   <v-row>
-    <v-col class="d-flex justify-center">
-  <h1>Exploratory Data Analysis</h1>
+    <v-col class="d-flex">
+  <h1 class="custom-font text-5xl">Spatial Pattern Mining</h1>
     </v-col>
   </v-row>
     <v-row>
-      <v-col class="d-flex justify-center">
-        <p>Load GeoJSON data from one of the sidebar options & select fields of interest in the drop down menu.</p>
+      <v-col class="d-flex mt-5">
+        <div>Load GeoJSON data from one of the sidebar options & select fields of interest in the drop down menu.</div>
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="d-flex justify-center">
+      <v-col class="d-flex m-5">
         <p v-if="fieldNames.length > 0">Web Service: {{searchedValue}}</p>
       </v-col>
     </v-row>
     <v-row v-if="fieldNames.length > 0">
       <v-col>
-        <h2>Make Selection</h2>
+        <h2 class="text-3xl mt-5">Make Selection</h2>
       </v-col>
     </v-row>
   <v-row>
-  <v-col class="d-flex justify-center">
+  <v-col class="d-flex">
     <v-select
         v-model="selectedFields"
         clearable
@@ -64,5 +64,7 @@ const { fieldNames, selectedFields, searchedValue, headers } = storeToRefs(data_
 </script>
 
 <style scoped>
-
+.custom-font {
+  font-family: 'Geist', sans-serif; /* Fallback font is optional */
+}
 </style>

@@ -87,10 +87,6 @@ export const useDataStore = defineStore('data_store', {
 
         },
 
-        async tabMap() {
-            this.tab = 2;
-        },
-
         async createPopupContent(feature: any) {
             console.log("triggering on change")
             let content = '<div class="popup-content">';

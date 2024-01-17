@@ -22,19 +22,17 @@
         </v-list-item>
 
         <v-divider></v-divider>
-
         <v-list density="compact" nav>
           <v-list-item prepend-icon="mdi-cloud-download-outline"
                        title="Url"
                        value="url"
                        @click="url_dialog = true"
           ></v-list-item>
-
-          <v-list-item prepend-icon="mdi-file-code-outline"
-                       title="File"
-                       value="file"
-                        @click="file_dialog = true"
-          ></v-list-item>
+<!--          <v-list-item prepend-icon="mdi-file-code-outline"-->
+<!--                       title="File"-->
+<!--                       value="file"-->
+<!--                        @click="file_dialog = true"-->
+<!--          ></v-list-item>-->
           <v-list-item v-if="layerName.length > 0 & tab == 2 & rail == false">
             <div>
               <div class="d-flex align-center">
@@ -42,16 +40,13 @@
               </div>
             </div>
           </v-list-item>
-
-
-
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 600px;"></v-main>
     </v-layout>
   </v-card>
   <LoadUrl />
-  <LoadFile />
+<!--  <LoadFile />-->
 </template>
 
 <script setup lang="ts">
