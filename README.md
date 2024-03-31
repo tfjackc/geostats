@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Dynamic Web Service Viewer
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### Application showcasing how to import GeoJson Web services, load into a table based on selected fields, and preview in a leaflet map frame.
+
+![Application Screenhot](public/load_web_services.png)
 
 ## Setup
 
