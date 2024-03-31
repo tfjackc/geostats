@@ -2,7 +2,7 @@
   <v-container class="data-container">
   <v-row>
     <v-col class="d-flex">
-  <h1 class="custom-font text-5xl">Spatial Pattern Mining</h1>
+  <h1 class="custom-font text-5xl">Web Service Viewer</h1>
     </v-col>
   </v-row>
     <v-row>
