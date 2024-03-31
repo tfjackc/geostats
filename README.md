@@ -2,6 +2,8 @@
 
 ### Application showcasing how to import GeoJson Web services, load into a table based on selected fields, and preview in a leaflet map frame.
 
+### Available: https://geostats-lemon.vercel.app/
+
 ![Application Screenhot](public/load_web_services.png)
 
 ## Setup
